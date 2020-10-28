@@ -13,6 +13,15 @@ it('renders the UI as expected', () => {
     const tree = renderer
         .create(<List 
             header="First List"
+            store={
+                {cards:[
+                    {
+                        title: "test title",
+                        content: "test content",
+                        key: "a"
+                    }
+                ]}
+            }
             />).toJSON();
     expect(tree).toMatchSnapshot();
 });

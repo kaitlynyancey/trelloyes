@@ -9,25 +9,25 @@ class List extends React.Component {
         } 
     }
     render(){
-        const {store} = this.props
-        const allCards = store.cards.map(function(card){
-            return (
-                <Card 
+        //console.log(this.props.cards)
+        const allCards = this.props.cards.map((card)=>
+                (<Card 
                     title = {card.title}
                     content = {card.content}
-                    key = {card.id}
-                />
-            )
-        })
+                    id = {card.id}
+                    onDeleteItem={this.props.onDeleteItem}
+                    listId = {this.props.id}
+                />)
+            
+        )
         return(
-            <section className='List'>
+            <section className='List' id={this.props.id}>
                 <header className="List-header">
                     <h2>{this.props.header}</h2>
                 </header>
                 <div className='List-cards'>
                     {allCards}
-    
-                    <button type="button" className="List-add-button">
+                    <button type="button" className="List-add-button" onClick={() => this.props.onRandomItem(this.props.id)}>
                         + Add Random Card
                     </button>
                 </div>
